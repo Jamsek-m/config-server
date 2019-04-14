@@ -55,6 +55,19 @@ func overrideWithEnv() {
 		config.Server.BaseUrl = serverBaseUrl
 	}
 
+	serverSessionDuration, serverSessionDurationPresent := os.LookupEnv("SERVER_SESSIONDURATION")
+	if serverSessionDurationPresent {
+		duration, durationParseErr := strconv.Atoi(serverSessionDuration)
+		if durationParseErr != nil {
+			fmt.Println("Session duration cannot be parsed to integer!")
+			os.Exit(2)
+		}
+		if duration <= 0 {
+			duration = 3600
+		}
+		config.Server.SessionDuration = duration
+	}
+
 	//datasourceType, datasourceTypePresent := os.LookupEnv("DATASOURCE_TYPE")
 	//if datasourceTypePresent {
 	//	config.Datasource.Type = datasourceType

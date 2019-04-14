@@ -12,8 +12,9 @@ type _Service struct {
 }
 
 type _Server struct {
-	Port    int    `yaml:"port,omitempty"`
-	BaseUrl string `yaml:"base-url,omitempty"`
+	Port            int    `yaml:"port,omitempty"`
+	BaseUrl         string `yaml:"base-url,omitempty"`
+	SessionDuration int    `yaml:"session-duration,omitempty"`
 }
 
 type _Datasource struct {
