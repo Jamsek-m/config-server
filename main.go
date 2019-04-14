@@ -1,9 +1,9 @@
 package main
 
 import (
-	"./config"
-	"./db"
-	"./server"
+	"github.com/Jamsek-m/config-server/config"
+	"github.com/Jamsek-m/config-server/db"
+	"github.com/Jamsek-m/config-server/server"
 )
 
 func main() {

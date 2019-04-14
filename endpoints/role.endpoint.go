@@ -1,7 +1,7 @@
 package endpoints
 
 import (
-	"../response"
+	"github.com/Jamsek-m/config-server/response"
 	"net/http"
 	"strconv"
 )

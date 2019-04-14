@@ -1,8 +1,8 @@
 package server
 
 import (
-	"../endpoints"
-	"../middlewares"
+	"github.com/Jamsek-m/config-server/endpoints"
+	"github.com/Jamsek-m/config-server/middlewares"
 	"github.com/gorilla/mux"
 	"net/http"
 )

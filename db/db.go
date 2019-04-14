@@ -1,9 +1,9 @@
 package db
 
 import (
-	"../config"
-	"../models"
 	"fmt"
+	"github.com/Jamsek-m/config-server/config"
+	"github.com/Jamsek-m/config-server/models"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )

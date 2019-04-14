@@ -1,10 +1,10 @@
 package endpoints
 
 import (
-	"../errors"
-	"../models"
-	"../response"
 	"encoding/json"
+	"github.com/Jamsek-m/config-server/errors"
+	"github.com/Jamsek-m/config-server/models"
+	"github.com/Jamsek-m/config-server/response"
 	"github.com/gorilla/mux"
 	"net/http"
 	"strconv"

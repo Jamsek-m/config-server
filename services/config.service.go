@@ -1,10 +1,10 @@
 package services
 
 import (
-	"../db"
-	"../errors"
-	"../models"
 	"fmt"
+	"github.com/Jamsek-m/config-server/db"
+	"github.com/Jamsek-m/config-server/errors"
+	"github.com/Jamsek-m/config-server/models"
 	"github.com/jinzhu/gorm"
 )
 

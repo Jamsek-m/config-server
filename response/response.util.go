@@ -1,9 +1,9 @@
 package response
 
 import (
-	"../errors"
 	"encoding/json"
 	"fmt"
+	"github.com/Jamsek-m/config-server/errors"
 	"net/http"
 )
 

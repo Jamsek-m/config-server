@@ -1,8 +1,8 @@
 package server
 
 import (
-	"../config"
 	"fmt"
+	"github.com/Jamsek-m/config-server/config"
 	"github.com/gorilla/mux"
 	"net/http"
 	"os"
