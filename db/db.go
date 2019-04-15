@@ -20,7 +20,7 @@ func ConnectToDatabase() {
 	}
 	fmt.Printf("Connected to database %s!\n", config.GetConfiguration().Datasource.Location)
 	conn = connection
-	conn.Debug().AutoMigrate(&models.User{}, &models.Role{}, &models.Config{})
+	conn.Debug().AutoMigrate(&models.User{}, &models.Role{}, &models.Config{}, &models.Session{})
 }
 
 func GetConnection() *gorm.DB {

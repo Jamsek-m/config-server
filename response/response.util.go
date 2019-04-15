@@ -30,9 +30,12 @@ func Json(res http.ResponseWriter, args JsonArgs) {
 	}
 
 	res.WriteHeader(args.Status)
-	jsonEncodeErr := json.NewEncoder(res).Encode(args.Data)
-	if jsonEncodeErr != nil {
-		fmt.Println("Error setting json response!")
+
+	if args.Data != nil {
+		jsonEncodeErr := json.NewEncoder(res).Encode(args.Data)
+		if jsonEncodeErr != nil {
+			fmt.Println("Error setting json response!")
+		}
 	}
 }
 
@@ -62,6 +65,8 @@ func determineStatusCode(err error) int {
 		return http.StatusConflict
 	case errors.NilValidationFailedError, errors.SemanticValidationFailedError:
 		return http.StatusUnprocessableEntity
+	case errors.UnAuthorizedError:
+		return http.StatusUnauthorized
 	default:
 		return http.StatusInternalServerError
 	}

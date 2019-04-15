@@ -11,4 +11,5 @@ var (
 	SemanticValidationFailedError = errors.New("Validation failed! Semantic validation failed!")
 	InternalServerError           = errors.New("Internal server error!")
 	ConflictError                 = errors.New("Conflict!")
+	UnAuthorizedError             = errors.New("Unathorized!")
 )
