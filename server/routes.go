@@ -18,6 +18,7 @@ func initRoutes(router *mux.Router) {
 	configEndpoint := endpoints.ConfigEndpoint{}
 	roleEndpoint := endpoints.RoleEndpoint{}
 	authEndpoint := endpoints.AuthEndpoint{}
+	tokenEndpoint := endpoints.TokenEndpoint{}
 
 	router.HandleFunc("/v1/auth/login", authEndpoint.Login).Methods(http.MethodPost)
 	router.HandleFunc("/v1/auth/logout", authEndpoint.Logout).Methods(http.MethodGet)
@@ -32,6 +33,9 @@ func initRoutes(router *mux.Router) {
 		userEndpoint.CreateUser).Methods(http.MethodPost)
 
 	router.HandleFunc("/v1/roles", roleEndpoint.GetRoles).Methods(http.MethodGet)
+
+	router.HandleFunc("/v1/tokens", tokenEndpoint.CreateToken).Methods(http.MethodPost)
+	router.HandleFunc("/v1/tokens/{id}", tokenEndpoint.ExpireToken).Methods(http.MethodDelete)
 
 	router.PathPrefix("/v1/keys").HandlerFunc(configEndpoint.GetConfigByKey).Methods(http.MethodGet)
 	router.PathPrefix("/v1/keys").HandlerFunc(configEndpoint.CreateConfigEntry).Methods(http.MethodPut)

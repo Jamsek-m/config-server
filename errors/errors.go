@@ -12,4 +12,5 @@ var (
 	InternalServerError           = errors.New("Internal server error!")
 	ConflictError                 = errors.New("Conflict!")
 	UnAuthorizedError             = errors.New("Unathorized!")
+	ForbiddenError                = errors.New("Forbidden!")
 )

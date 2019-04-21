@@ -3,9 +3,9 @@ INSERT INTO roles(code, label) VALUES ('CONF_READ', 'Read only');
 INSERT INTO roles(code, label) VALUES ('CONF_WRITE', 'Read and write');
 
 -- geslo123, token
-INSERT INTO users(username, password, access_token) VALUES ('miha', '$2a$10$DgFGdDX31W9QocuGhyXWqOdY.aVzaXjU9aw71jv4KAGqOjSs7xqiS', 'token');
-INSERT INTO users(username, password, access_token) VALUES ('readonly', '$2a$10$DgFGdDX31W9QocuGhyXWqOdY.aVzaXjU9aw71jv4KAGqOjSs7xqiS', 'token');
-INSERT INTO users(username, password, access_token) VALUES ('readandwrite', '$2a$10$DgFGdDX31W9QocuGhyXWqOdY.aVzaXjU9aw71jv4KAGqOjSs7xqiS', 'token');
+INSERT INTO users(username, password) VALUES ('miha', '$2a$10$DgFGdDX31W9QocuGhyXWqOdY.aVzaXjU9aw71jv4KAGqOjSs7xqiS');
+INSERT INTO users(username, password) VALUES ('readonly', '$2a$10$DgFGdDX31W9QocuGhyXWqOdY.aVzaXjU9aw71jv4KAGqOjSs7xqiS');
+INSERT INTO users(username, password) VALUES ('readandwrite', '$2a$10$DgFGdDX31W9QocuGhyXWqOdY.aVzaXjU9aw71jv4KAGqOjSs7xqiS');
 
 INSERT INTO user_roles(user_id, role_id) VALUES (1, 1);
 INSERT INTO user_roles(user_id, role_id) VALUES (1, 2);

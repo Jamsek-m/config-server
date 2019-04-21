@@ -12,6 +12,12 @@ import (
 type ConfigEndpoint struct{}
 
 func (c ConfigEndpoint) GetConfigByKey(res http.ResponseWriter, req *http.Request) {
+	_, validToken, tokenErr := tokenService.ValidateToken(req)
+	if !validToken {
+		response.HandleError(res, tokenErr)
+		return
+	}
+
 	configKey := strings.Replace(req.URL.Path, "/v1/keys", "", 1)
 
 	configEntry, err := configService.GetConfigByKey(configKey)
@@ -23,6 +29,12 @@ func (c ConfigEndpoint) GetConfigByKey(res http.ResponseWriter, req *http.Reques
 }
 
 func (c ConfigEndpoint) CreateConfigEntry(res http.ResponseWriter, req *http.Request) {
+	_, validToken, tokenErr := tokenService.ValidateToken(req)
+	if !validToken {
+		response.HandleError(res, tokenErr)
+		return
+	}
+
 	configKey := strings.Replace(req.URL.Path, "/v1/keys", "", 1)
 	requestBody, decodeErr := decodeConfigRequest(req)
 	if decodeErr != nil {

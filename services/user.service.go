@@ -12,8 +12,9 @@ import (
 type UserService struct{}
 
 func (u UserService) GetAllUsers() ([]models.User, int, error) {
-	users := make([]models.User, 0)
-	err := db.GetConnection().Table(models.USER_TABLE_NAME).Find(&users).Error
+	var users []models.User
+	err := db.GetConnection().Preload("Roles").Find(&users).Error
+
 	if err != nil {
 		fmt.Println(err)
 		return nil, -1, errors.InternalServerError
@@ -23,7 +24,12 @@ func (u UserService) GetAllUsers() ([]models.User, int, error) {
 
 func (u UserService) GetUserById(id uint) (*models.User, error) {
 	user := &models.User{}
-	err := db.GetConnection().Table(models.USER_TABLE_NAME).Where("id = ?", id).First(user).Error
+	err := db.GetConnection().
+		Preload("Roles").
+		Table(models.USER_TABLE_NAME).
+		Where("id = ?", id).
+		First(user).
+		Error
 	if err != nil && err == gorm.ErrRecordNotFound {
 		return nil, errors.NotFoundError
 	} else if err != nil {
@@ -35,7 +41,12 @@ func (u UserService) GetUserById(id uint) (*models.User, error) {
 
 func (u UserService) GetUserByUsername(username string) (*models.User, error) {
 	user := &models.User{}
-	err := db.GetConnection().Table(models.USER_TABLE_NAME).Where("username = ?", username).First(user).Error
+	err := db.GetConnection().
+		Preload("Roles").
+		Table(models.USER_TABLE_NAME).
+		Where("username = ?", username).
+		First(user).
+		Error
 	if err != nil && err == gorm.ErrRecordNotFound {
 		return nil, errors.NotFoundError
 	} else if err != nil {

@@ -6,3 +6,4 @@ var userService = services.UserService{}
 var configService = services.ConfigService{}
 var roleService = services.RoleService{}
 var authService = services.AuthService{}
+var tokenService = services.TokenService{}

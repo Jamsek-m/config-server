@@ -14,13 +14,21 @@ func ConnectToDatabase() {
 	connection, connectionErr := gorm.Open(
 		config.GetConfiguration().Datasource.Type,
 		config.GetConfiguration().Datasource.Location)
-
+	if config.GetConfiguration().Service.Env == "dev" {
+		connection.LogMode(true)
+	}
 	if connectionErr != nil {
 		fmt.Printf("DB connection error! " + connectionErr.Error())
 	}
 	fmt.Printf("Connected to database %s!\n", config.GetConfiguration().Datasource.Location)
 	conn = connection
-	conn.Debug().AutoMigrate(&models.User{}, &models.Role{}, &models.Config{}, &models.Session{})
+	conn.Debug().AutoMigrate(
+		&models.User{},
+		&models.Role{},
+		&models.Config{},
+		&models.Session{},
+		&models.Token{},
+	)
 }
 
 func GetConnection() *gorm.DB {

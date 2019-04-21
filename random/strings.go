@@ -1,13 +1,20 @@
 package random
 
-import "math/rand"
+import (
+	"math/rand"
+	"strings"
+	"time"
+)
 
 const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
 
 func GenerateRandomString(n int) string {
-	bytes := make([]byte, n)
-	for i := range bytes {
-		bytes[i] = chars[rand.Intn(len(chars))]
+	rand.Seed(time.Now().UnixNano())
+
+	var builder strings.Builder
+	for i := 0; i < n; i++ {
+		builder.WriteByte(chars[rand.Intn(len(chars))])
 	}
-	return string(bytes)
+
+	return builder.String()
 }
