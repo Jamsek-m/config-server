@@ -9,6 +9,7 @@ import (
 
 func initMiddlewares(router *mux.Router) {
 	router.Use(middlewares.PoweredByFilter)
+	router.Use(middlewares.CorsFilter)
 	router.Use(middlewares.SecurityHeadersFilter)
 }
 
